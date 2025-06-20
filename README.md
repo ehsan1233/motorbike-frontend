@@ -1,18 +1,28 @@
 # motorbike-frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is the **frontend** of the full-stack application [motorbike-shop-backend-nodejs](https://github.com/salvador-lopez/motorbike-shop-backend-nodejs), which provides the backend API for managing a motorbike e-commerce platform.
+
+Built with **Vue 3**, this frontend is developed with a strong focus on accessibility, modern developer experience, and scalability. The project uses **Vite**, **Pinia** for state management, **Storybook** for UI documentation, and includes a thorough ESLint setup.
+
+## 🚀 Goals
+
+- Deliver an accessible, modern, and responsive UI
+- Promote reusability and maintainability with component-driven design
+- Align tightly with the backend architecture for seamless integration
+
+## 🧩 Tech Stack
+- [Vue 3](https://vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [ESLint](https://eslint.org/)
+- [Storybook](https://storybook.js.org/)
+- [Vitest](https://vitest.dev/)
+- [Cypress](https://www.cypress.io/)
 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
 
 ## Project Setup
 
