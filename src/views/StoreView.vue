@@ -20,7 +20,7 @@ const products = [
 <template>
   <div class="store-view">
     <h1 class="store-view__heading">Store</h1>
-    <div class="store-view__grid" tabindex="5">
+    <div class="store-view__grid">
       <ProductTile v-for="(product, index) in products" :key="index" v-bind="product" />
     </div>
   </div>
