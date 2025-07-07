@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { useModal } from '@/composables/useModal'
-import NewAccountModal from '@/components/NewAccountModal/NewAccountModal.vue'
-import { type CustomerData, getCustomers } from '@/fetch/CustomerData.ts'
-import { onBeforeMount, ref } from 'vue'
+import { useModal } from '@/composables/useModal';
+import NewAccountModal from '@/components/NewAccountModal/NewAccountModal.vue';
+import { type CustomerData, getCustomers } from '@/fetch/CustomerData.ts';
+import { onBeforeMount, ref } from 'vue';
 
-const { isModalOpen, openModal, closeModal } = useModal()
+const { isModalOpen, openModal, closeModal } = useModal();
 
-const customers = ref<CustomerData[]>([])
+const customers = ref<CustomerData[]>([]);
 
 onBeforeMount(async () => {
-  customers.value = await getCustomers()
-})
+  customers.value = await getCustomers();
+});
 </script>
 
 <template>

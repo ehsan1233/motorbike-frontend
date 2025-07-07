@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductTile from '@/components/ProductTile/ProductTile.vue'
+import ProductTile from '@/components/ProductTile/ProductTile.vue';
 
 const products = [
   {
@@ -14,7 +14,7 @@ const products = [
     image: new URL('@/assets/Fighter-50.jpg', import.meta.url).href,
     description: 'Motorcycle Fighter 50 V-S red 45 km/h Euro 5',
   },
-]
+];
 </script>
 
 <template>

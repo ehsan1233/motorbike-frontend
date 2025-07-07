@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { type CustomerData, getCustomerData } from '@/fetch/CustomerData.ts'
-import { onBeforeMount, ref } from 'vue'
+import { type CustomerData, getCustomerData } from '@/fetch/CustomerData.ts';
+import { onBeforeMount, ref } from 'vue';
 
-const customer = ref<CustomerData>()
+const customer = ref<CustomerData>();
 
 async function fetchCustomerData(): Promise<void> {
-  customer.value = await getCustomerData('9f2f9e08-93b6-47c1-a54e-5cffc6f59e4b')
+  customer.value = await getCustomerData('9f2f9e08-93b6-47c1-a54e-5cffc6f59e4b');
 }
 
 onBeforeMount(async () => {
-  await fetchCustomerData()
-})
+  await fetchCustomerData();
+});
 </script>
 
 <template>

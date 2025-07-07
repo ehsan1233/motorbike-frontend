@@ -1,47 +1,47 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { createNewCustomer } from '@/fetch/CustomerData'
-import { v4 as uuidv4 } from 'uuid'
+import { ref } from 'vue';
+import { createNewCustomer } from '@/fetch/CustomerData';
+import { v4 as uuidv4 } from 'uuid';
 
-const valid = ref(false)
+const valid = ref(false);
 
-const firstname = ref('')
-const lastname = ref('')
-const email = ref('')
+const firstname = ref('');
+const lastname = ref('');
+const email = ref('');
 const billingAddress = ref({
   street: '',
   city: '',
   state: '',
   zipCode: '',
   country: '',
-})
+});
 
 const emailRules = [
   (v: string) => !!v || 'E-mail is required',
   (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-]
+];
 
 const submit = async () => {
-  if (!valid.value) return
+  if (!valid.value) return;
 
   try {
     const response = createNewCustomer({
       id: uuidv4(),
       email: email.value,
       billing_address: billingAddress.value,
-    })
+    });
     console.log({
       response,
-    })
-    emit('close')
+    });
+    emit('close');
   } catch (error) {
-    console.error('Failed to create account', error)
+    console.error('Failed to create account', error);
   }
-}
+};
 
 const emit = defineEmits<{
-  close: []
-}>()
+  close: [];
+}>();
 </script>
 
 <template>
