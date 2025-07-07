@@ -14,6 +14,8 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <p v-if="customer">{{ customer?.available_credit }}</p>
-  <p v-else>Loading...</p>
+  <v-container>
+    <p v-if="customer">{{ customer?.available_credit }}</p>
+    <p v-else>Loading...</p>
+  </v-container>
 </template>

@@ -31,7 +31,7 @@ const submit = async () => {
       billing_address: billingAddress.value,
     });
 
-    await getCustomers()
+    await getCustomers();
 
     emit('close');
   } catch (error) {
