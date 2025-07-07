@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createNewCustomer } from '@/fetch/CustomerData';
+import { createNewCustomer, getCustomers } from '@/fetch/CustomerData';
 import { v4 as uuidv4 } from 'uuid';
 
 const valid = ref(false);
@@ -25,14 +25,14 @@ const submit = async () => {
   if (!valid.value) return;
 
   try {
-    const response = createNewCustomer({
+    await createNewCustomer({
       id: uuidv4(),
       email: email.value,
       billing_address: billingAddress.value,
     });
-    console.log({
-      response,
-    });
+
+    await getCustomers()
+
     emit('close');
   } catch (error) {
     console.error('Failed to create account', error);

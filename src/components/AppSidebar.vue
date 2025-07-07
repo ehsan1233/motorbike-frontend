@@ -8,7 +8,7 @@ const navItems = [
   { key: 'store', to: '/store', title: 'Store', icon: 'mdi-store' },
   { key: 'account', to: '/account', title: 'Account', icon: 'mdi-account' },
   { key: 'about', to: '/about', title: 'About', icon: 'mdi-information' },
-  { key: 'admin', to: '/admin', title: 'Admin', icon: 'mdi-gear' },
+  { key: 'admin', to: '/admin', title: 'Admin', icon: 'mdi-cog' },
 ];
 </script>
 
