@@ -8,12 +8,14 @@ import AccountsList from '@/components/AccountsList/AccountsList.vue';
 const { isModalOpen, openModal, closeModal } = useModal();
 
 const accounts = ref<CustomerData[]>([]);
+const showSuccess = ref(false);
 
 async function refreshAccounts() {
   accounts.value = await getCustomers();
 }
 
 async function handleAccountCreation(newAccount: CustomerCreateData) {
+  showSuccess.value = true;
   accounts.value.push({ id: newAccount.id, email: newAccount.email, available_credit: 0 });
 }
 
@@ -33,6 +35,9 @@ onBeforeMount(async () => {
       @close="closeModal"
       @account-created="handleAccountCreation"
     />
+    <v-snackbar v-model="showSuccess" color="success" timeout="3000" location="top end">
+      New Account successfully created!
+    </v-snackbar>
   </v-container>
 </template>
 
