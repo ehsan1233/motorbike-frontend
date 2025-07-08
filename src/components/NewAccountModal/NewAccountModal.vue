@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createNewCustomer, getCustomers } from '@/fetch/CustomerData';
+import { createNewCustomer, type CustomerCreateData } from '@/fetch/CustomerData';
 import { v4 as uuidv4 } from 'uuid';
 
 const valid = ref(false);
@@ -16,6 +16,11 @@ const billingAddress = ref({
   country: '',
 });
 
+const emit = defineEmits<{
+  close: [];
+  'account-created': [CustomerCreateData];
+}>();
+
 const emailRules = [
   (v: string) => !!v || 'E-mail is required',
   (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
@@ -24,50 +29,37 @@ const emailRules = [
 const submit = async () => {
   if (!valid.value) return;
 
+  const newAccount: CustomerCreateData = {
+    id: uuidv4(),
+    email: email.value,
+    billing_address: billingAddress.value,
+  };
+
   try {
-    await createNewCustomer({
-      id: uuidv4(),
-      email: email.value,
-      billing_address: billingAddress.value,
-    });
+    await createNewCustomer(newAccount);
 
-    await getCustomers();
-
+    emit('account-created', newAccount);
     emit('close');
   } catch (error) {
     console.error('Failed to create account', error);
   }
 };
-
-const emit = defineEmits<{
-  close: [];
-}>();
 </script>
 
 <template>
   <v-overlay :model-value="true" class="d-flex align-center justify-center">
-    <v-card class="modal-card">
+    <v-card class="new-account-modal__modal_card">
       <h3>Create New Account</h3>
 
       <v-form v-model="valid">
         <v-container>
           <v-row>
             <v-col cols="6" md="4">
-              <v-text-field
-                v-model="firstname"
-                :counter="10"
-                label="First name"
-                required
-              ></v-text-field>
+              <v-text-field v-model="firstname" label="First name"></v-text-field>
             </v-col>
 
             <v-col cols="6" md="4">
-              <v-text-field
-                v-model="lastname"
-                :counter="10"
-                label="Last name"
-                required
-              ></v-text-field>
+              <v-text-field v-model="lastname" label="Last name"></v-text-field>
             </v-col>
             <v-col cols="10" md="4">
               <v-text-field
@@ -106,17 +98,27 @@ const emit = defineEmits<{
         </v-container>
       </v-form>
 
-      <div class="modal-actions">
+      <div class="new-account-modal__modal_actions">
         <v-btn color="primary" @click="submit">Create</v-btn>
-        <v-btn color="secondary" @click="emit('close')">Close</v-btn>
+        <v-btn color="secondary" class="new-account-modal__close_btton" @click="emit('close')"
+          >Close</v-btn
+        >
       </div>
     </v-card>
   </v-overlay>
 </template>
 
 <style scoped lang="scss">
-.modal-card {
-  width: 700px;
-  padding: 24px;
+.new-account-modal {
+  &__modal_card {
+    width: 700px;
+    padding: 24px;
+  }
+
+  &__modal_actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
 }
 </style>

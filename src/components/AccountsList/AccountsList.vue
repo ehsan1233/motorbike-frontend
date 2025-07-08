@@ -4,7 +4,7 @@ import type { CustomerData } from '@/fetch/CustomerData.ts';
 const { accounts } = defineProps<{ accounts: CustomerData[] }>();
 </script>
 <template>
-  <v-table height="300px" fixed-header>
+  <v-table fixed-header>
     <thead>
       <tr>
         <th class="text-left w-30">ID</th>
