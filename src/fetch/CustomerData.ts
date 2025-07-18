@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 
 export type CustomerData = {
   id: string;
@@ -49,5 +49,17 @@ export async function getCustomers(): Promise<CustomerData[]> {
   } catch (error) {
     console.error(error);
     throw new Error('failed to get customers');
+  }
+}
+
+export async function updateCustomerCredit(
+  customerId: string,
+  credit: number,
+): Promise<AxiosResponse<void>> {
+  try {
+    return await axios.patch(`${baseUrl}${customerId}/add-credit`, { credit });
+  } catch (error) {
+    console.error('Failed to update credit', error);
+    throw error;
   }
 }
