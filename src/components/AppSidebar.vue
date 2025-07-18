@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router';
 
-const route = useRoute()
+const route = useRoute();
 
 const navItems = [
   { key: 'home', to: '/', title: 'Home', icon: 'mdi-home' },
   { key: 'store', to: '/store', title: 'Store', icon: 'mdi-store' },
   { key: 'account', to: '/account', title: 'Account', icon: 'mdi-account' },
   { key: 'about', to: '/about', title: 'About', icon: 'mdi-information' },
-]
+  { key: 'admin', to: '/admin', title: 'Admin', icon: 'mdi-cog' },
+];
 </script>
 
 <template>

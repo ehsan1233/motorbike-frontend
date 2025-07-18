@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductTile from '@/components/ProductTile/ProductTile.vue'
+import ProductTile from '@/components/ProductTile/ProductTile.vue';
 
 const products = [
   {
@@ -14,16 +14,18 @@ const products = [
     image: new URL('@/assets/Fighter-50.jpg', import.meta.url).href,
     description: 'Motorcycle Fighter 50 V-S red 45 km/h Euro 5',
   },
-]
+];
 </script>
 
 <template>
-  <div class="store-view">
-    <h1 class="store-view__heading">Store</h1>
-    <div class="store-view__grid" tabindex="5">
-      <ProductTile v-for="(product, index) in products" :key="index" v-bind="product" />
+  <v-container>
+    <div class="store-view">
+      <h1 class="store-view__heading">Store</h1>
+      <div class="store-view__grid">
+        <ProductTile v-for="(product, index) in products" :key="index" v-bind="product" />
+      </div>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <style scoped lang="scss">
